@@ -14,7 +14,7 @@ notes: https://github.com/microsoft/kiota/releases/tag/v1.36.0). v1.36.1 is the 
 **Version:** Kiota 1.35.0+114aa7ee609262d892fd9ceb02b2d9f7ecb84190, Dart 3.13.5,
 `microsoft_kiota_abstractions` 0.3.0.
 
-**Reproduction:** REPO_COMMIT_URL (run `scripts/reproduce.sh 1.35.0`; schema in `openapi.yaml`).
+**Reproduction:** https://github.com/ricardoboss/kiota-dart-discriminator-repro/tree/2126c8ad175edfe84c4c230fe45f07f0afc092b7 (run `scripts/reproduce.sh 1.35.0`; schema in `openapi.yaml`).
 `kiota generate --language Dart --openapi openapi.yaml --class-name ReproClient --namespace-name repro --output lib/src --exclude-backward-compatible`, then `dart analyze lib`.
 
 **Actual:** `ProblemDetailsDto extends ApiException` with `required this.additionalData`, but
