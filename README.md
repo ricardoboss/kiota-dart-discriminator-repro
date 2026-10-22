@@ -1,8 +1,7 @@
 # kiota-dart-discriminator-repro
 
 Minimal synthetic reproduction of Kiota Dart generator defects with a discriminated
-error base schema (`ProblemDetailsDto`). Tracking issue:
-https://github.com/ricardoboss-org/flugrunde/issues/234
+error base schema (`ProblemDetailsDto`).
 
 ## Result
 
@@ -13,8 +12,9 @@ https://github.com/ricardoboss-org/flugrunde/issues/234
 | 1.36.1 (latest release as of 2026-10-21) | 0 |
 
 The defects are fixed upstream in 1.36.0 (release notes: "Dart: an error model's constructor
-declared the named `additionalData` parameter as `required` ..." and "Fixed the generation of a schema
-used in two roles at once ..."). See [UPSTREAM_REPORT.md](UPSTREAM_REPORT.md).
+declared the named `additionalData` parameter as `required` ..."; the `return_of_invalid_type` error
+also disappears in 1.36.0, though its release note is stated for C# and Java). See
+[UPSTREAM_REPORT.md](UPSTREAM_REPORT.md).
 
 ## Reproduce
 
@@ -36,5 +36,4 @@ CI runs the same script for each version; green means the expected result held f
 `openapi.yaml`: base `ProblemDetailsDto` with a `type` discriminator, used as the `default` error
 response; two derived schemas used as explicit 404/409 error responses, one derived schema
 (`GoneProblemDto`) used only in the discriminator mapping.
-Out of scope: the runtime `copyWith` subtype-erasing behavior of `microsoft_kiota_http`
-(tracked separately in the app repo as FR235).
+Out of scope: the runtime `copyWith` subtype-erasing behavior of `microsoft_kiota_http`.
